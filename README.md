@@ -1,7 +1,7 @@
 # Getting-and-Cleaning-Data-Course-Project
 
 
-1. First, unzip the data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+1. Unzip the data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 2. Make sure the folder **UCI HAR Dataset** and the **run_analysis.R** script are both in the current working directory
 2. For running skript you should open **R Studio** and write command **source("run_analysis.R")** and press **Enter**
 3. After that script read all files with data and create data sets, merge it and create subset for all columns where it find key words **mean()** and **std()**.

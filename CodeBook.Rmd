@@ -1,0 +1,58 @@
+---
+title: "CodeBook for Getting and Cleaning Data Course Project"
+output: html_document
+---
+
+## Overview
+
+This file describes the variables, the data, and any transformations or work that I have performed to clean up the data.
+
+### Data Source
+* The site where the data was obtained: 
+
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+* The data for the project:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+
+### Variables and transformations
+The **run_analysis.R** script performs the following steps to transform the data:
+
+1. Read **activity_labels.txt** from the main directoty of Data Folder and store it in **activity_lbl** variable. After that
+* remove one column (which contain just ID of records), 
+* translate characters to lower case,
+* and remove symbol "_" from names.
+
+2. Read **features.txt** from the main directoty of Data Folder and store it in **features** variable.
+
+3. Read **X_train.txt**, **y_train.txt** and **subject_train.txt** from the "./train" folder and store them in **train_data**, **train_var** and **tr_subjects** variables respectively.
+
+4. For **train_var** variable change values from number to characters from variable **activity_lbl**.
+
+5. For column names from data set **train_data** assign values from variable **features**.
+
+6. Create new data set **train_ds** which include data from **tr_subjects**, **train_var** and **train_data**.
+
+7. Read **X_test.txt**, **y_test.txt** and **subject_test.txt** from the "./train" folder and store them in **test_data**, **test_var** and **ts_subjects** variables respectively.
+
+8. For **test_var** variable change values from number to characters from variable **activity_lbl**.
+
+9. For column names from data set **test_data** assign values from variable **features**.
+
+10. Create new data set **test_ds** which include data from **ts_subjects**, **test_var** and **test_data**.
+
+11. Merge **train_ds** and **test_ds** data sets to data set **g_ds** by rows
+
+12. Count order of column in generall data set **g_ds** where we have **mean()** or **std()** words and save this order to **col_n_mean** and **col_n_std** variable respectively.
+
+13. Create common vector with **col_n_mean** and **col_n_std** to **col_num** variable and sort order of numbers of columns.
+
+14. Create new subset **g_ds_sub** from **g_ds** which contains only columns with subjects, activity and numbers of columns fro variable **col_num**
+
+15. Clean the column names of the subset. I remove the "()" and "-" symbols in the column names and translate to lower case.
+
+16. Finally, generate a tidy data set with the average of each measurement for each activity and each subject and save it to variable **tidy_ds**. 
+
+17. Write the result out to **"results_set.txt"** file in current working directory.
